@@ -25,13 +25,11 @@ public class Main {
                 "take out rubbish",
                 LocalDate.of(2023, 9, 15),
                 LocalTime.of(21, 0));
-        System.out.println("...........................");
 
         taskManager.findTaskByCategory(Task.Category.high);
-        System.out.println("...........................");
+
         taskManager.sortTaskByCategory();
-        System.out.println("...........................");
-        System.out.println("...........................");
+
         taskManager.deleteTask(Task.Category.medium,
                 "take out rubbish",
                 LocalDate.of(2023, 9, 15),
