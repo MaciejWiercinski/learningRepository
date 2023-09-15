@@ -3,7 +3,6 @@ package com.example.toDoList;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,15 +13,16 @@ public class TaskManager {
 
     private List<Task> listOfTasks = new ArrayList<>();
 
-    public void createTask(Task.Category category, String description, LocalDate date, LocalTime time) {
-        Task task = new Task();
-        task.setStatus(Task.Status.created);
-        task.setCategory(category);
-        task.setDescription(description);
-        task.setDate(date);
-        task.setTime(time);
-        listOfTasks.add(task);
+    public Task createTask(Task.Category category, String description, LocalDate date, LocalTime time) {
+        Task newtask = new Task();
+        newtask.setStatus(Task.Status.created);
+        newtask.setCategory(category);
+        newtask.setDescription(description);
+        newtask.setDate(date);
+        newtask.setTime(time);
+        listOfTasks.add(newtask);
         listOfTasks.forEach(System.out::println);
+        return newtask;
     }
 
     public void findTaskByCategory(Task.Category category) {
@@ -37,8 +37,16 @@ public class TaskManager {
                 .forEach(System.out::println);
     }
 
-    public void editTask() {
-
+    public void editStatusOfTask(Task task, Task.Status newStatus) {
+       listOfTasks.removeIf(t -> t.equals(task));
+       Task updateTask = new Task();
+       updateTask.setStatus(newStatus);
+       updateTask.setCategory(task.getCategory());
+       updateTask.setDescription(task.getDescription());
+       updateTask.setDate(task.getDate());
+       updateTask.setTime(task.getTime());
+       listOfTasks.add(updateTask);
+       listOfTasks.forEach(System.out::println);
     }
 
     public void deleteTask(Task.Category category, String description, LocalDate date, LocalTime time) {

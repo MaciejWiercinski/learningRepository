@@ -8,19 +8,19 @@ public class Main {
     public static void main(String[] args) {
 
         TaskManager taskManager = new TaskManager();
-        taskManager.createTask(
+        Task payARent = taskManager.createTask(
                 Task.Category.high,
                 "pay a rent",
                 LocalDate.of(2023, 9, 15),
                 LocalTime.of(10, 0));
 
-        taskManager.createTask(
+        Task goShopping = taskManager.createTask(
                 Task.Category.low,
                 "go shopping",
                 LocalDate.of(2023, 9, 15),
                 LocalTime.of(12, 0));
 
-        taskManager.createTask(
+        Task takeOutRubbish = taskManager.createTask(
                 Task.Category.medium,
                 "take out rubbish",
                 LocalDate.of(2023, 9, 15),
@@ -35,5 +35,6 @@ public class Main {
                 LocalDate.of(2023, 9, 15),
                 LocalTime.of(21, 0));
 
+        taskManager.editStatusOfTask(takeOutRubbish, Task.Status.finished);
     }
 }
